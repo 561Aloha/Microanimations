@@ -1,0 +1,80 @@
+
+.carousel::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+  height: 8px;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.carousel::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+
+.carousel {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  margin: auto;
+  border: 2px solid #ccc;
+  background-color: aliceblue;
+  gap: 20px; /* Space between images */
+  margin-top: 20px;
+  padding-top: 60px;
+  /* Hide scrollbar */
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For IE and Edge */
+  
+  position: relative;
+  padding: 20px;
+}
+
+
+.carousel__img {
+  margin: 10px; /* Adds spacing around images */
+  max-width: 100%;
+  width: 500px;
+  height: 0; /* Start with height 0 */
+  object-fit: cover;
+    border-radius: 10px;
+  transition: 
+    transform 0.75s ease-out, 
+    width 0.5s ease-out, 
+    height 0.5s ease-out,/* Smooth animations */
+    opacity 0.75s ease-out; 
+    opacity: 0; /* Start hidden */
+  transform: translateY(0px); /* Start below its position */
+  flex-grow: 1;
+  transition: height 1s ease-out, opacity 1s ease-out;
+  
+/* Set the growth point to the bottom */
+  opacity: 0; /* Start hidden */
+  overflow: hidden; /* Hide overflowing content */
+}
+
+.carousel__img-container {
+  position: relative;
+  flex: 0 0 auto; /* Prevent stretching */
+  width: 80%; /* Adjust this for image size control */
+  height: auto;
+  max-width: 500px; /* Prevent overly large images */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel__img.grow {
+  transform-origin: bottom center;
+  transform: scale(1.2); /* Scale and move upwards */
+  opacity: 1; /* Make the image visible */
+  margin: 20px; /* Increase spacing when growing to avoid touching */
+  padding-top: 0; /* Ensure consistent layout */
+  padding-left: 0;
+  padding-right: 0;
+  z-index: 1; /* Bring the growing image to the front */
+  height: 70%; /* Full height */
